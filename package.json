@@ -1,5 +1,5 @@
 {
-  "name": "admin",
+  "name": "test",
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
@@ -12,16 +12,15 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry",
-    "vercel-build": "node ./vercel-build.js"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.18.1",
-    "@strapi/plugin-users-permissions": "5.18.1",
-    "@strapi/strapi": "5.18.1",
+    "@strapi/plugin-cloud": "5.19.0",
+    "@strapi/plugin-users-permissions": "5.19.0",
+    "@strapi/strapi": "5.19.0",
     "better-sqlite3": "11.3.0",
-    "pg": "^8.11.3",
-    "pg-connection-string": "^2.6.2",
+    "pg": "^8.16.3",
+    "pg-connection-string": "^2.9.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -38,7 +37,7 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "1b585ed0-959d-433a-8672-6a3bcd32f126",
-    "installId": "a346494e2f1c6878dd53c124d03b75673bb6939ed85ef29a592dc9fa6bf25cdf"
+    "uuid": "4042bcf9-aee5-4c06-a830-2b2b33d12a17",
+    "installId": "a49baaa3f9c47fe4a4c30fa4d90f01e7d872d8142d298a13fbbc1adc53112ab8"
   }
 }

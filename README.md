@@ -36,27 +36,6 @@ yarn build
 
 Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
 
-### Deploying to Vercel
-
-This project is configured for deployment to Vercel. Follow these steps:
-
-1. Create a PostgreSQL database (using Vercel Postgres, Supabase, Neon, etc.)
-2. Install the Vercel CLI: `npm i -g vercel`
-3. Link your project: `vercel link`
-4. Add the following environment variables in the Vercel dashboard:
-   - `DATABASE_CLIENT=postgres`
-   - `DATABASE_URL=your_postgres_connection_string`
-   - `DATABASE_SSL=true`
-   - `NODE_ENV=production`
-   - `APP_KEYS` (Generate random keys)
-   - `API_TOKEN_SALT` (Generate a random salt)
-   - `ADMIN_JWT_SECRET` (Generate a random secret)
-   - `JWT_SECRET` (Generate a random secret)
-   - `TRANSFER_TOKEN_SALT` (Generate a random salt)
-5. Deploy your project: `vercel --prod`
-
-Note: For production, you should use a proper PostgreSQL database as SQLite is not suitable for Vercel's serverless environment.
-
 ```
 yarn strapi deploy
 ```

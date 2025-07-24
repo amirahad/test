@@ -31,12 +31,6 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-############################
-# dependencies
-############################
-
-/node_modules
-
 
 ############################
 # Packages
@@ -127,7 +121,7 @@ coverage
 # Strapi
 ############################
 
-.env*
+.env
 license.txt
 exports
 .strapi
@@ -135,5 +129,3 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
-.vercel
-.env*.local

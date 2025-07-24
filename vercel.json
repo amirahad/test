@@ -1,48 +1,9 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node",
-      "config": {
-        "buildCommand": "npm run build",
-        "outputDirectory": "public"
-      }
-    }
+    { "src": "src/index.ts", "use": "@vercel/node" }
   ],
   "routes": [
-    {
-      "src": "/admin/(.*)",
-      "dest": "/admin/$1"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/uploads/(.*)",
-      "dest": "/uploads/$1"
-    },
-    {
-      "src": "/i18n/(.*)",
-      "dest": "/i18n/$1"
-    },
-    {
-      "src": "/content-manager/(.*)",
-      "dest": "/content-manager/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "functions": {
-    "api/*.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  }
-} 
+    { "src": "/(.*)", "dest": "src/index.ts" }
+  ]
+}
