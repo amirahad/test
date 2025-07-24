@@ -1,21 +1,33 @@
 import path from 'path';
 
 export default ({ env }: { env: (key: string, defaultValue?: any) => any }) => {
-  console.log('Database config function called');
-  console.log('env function type:', typeof env);
-  
   const databaseUrl = env('DATABASE_URL');
-  console.log('DATABASE_URL value:', databaseUrl);
   
-  // Fallback configuration for testing
-  const config = {
+  if (!databaseUrl) {
+    throw new Error('DATABASE_URL environment variable is required');
+  }
+
+  return {
     connection: {
       client: 'postgres',
-      connection: databaseUrl || 'postgresql://localhost:5432/strapi',
+      connection: {
+        connectionString: databaseUrl,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      },
+      acquireConnectionTimeout: 60000,
+      pool: {
+        min: 0,
+        max: 10,
+        acquireTimeoutMillis: 60000,
+        createTimeoutMillis: 30000,
+        destroyTimeoutMillis: 5000,
+        idleTimeoutMillis: 30000,
+        reapIntervalMillis: 1000,
+        createRetryIntervalMillis: 200,
+      },
       useNullAsDefault: true,
     },
   };
-
-  console.log('Returning config:', JSON.stringify(config, null, 2));
-  return config;
 };
