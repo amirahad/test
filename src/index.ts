@@ -1,13 +1,18 @@
-const strapi = require('@strapi/strapi');
+export default {
+  /**
+   * An asynchronous register function that runs before
+   * your application is initialized.
+   *
+   * This gives you an opportunity to extend code.
+   */
+  register(/*{ strapi }*/) {},
 
-export default async (context: any) => {
-  try {
-    const appContext = await strapi.compile();
-    const strapiInstance = strapi(appContext);
-    await strapiInstance.start();
-    return strapiInstance;
-  } catch (error) {
-    console.error('Strapi bootstrap error:', error);
-    throw error;
-  }
+  /**
+   * An asynchronous bootstrap function that runs before
+   * your application gets started.
+   *
+   * This gives you an opportunity to set up your data model,
+   * run jobs, or perform some special logic.
+   */
+  bootstrap(/*{ strapi }*/) {},
 };
