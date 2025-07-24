@@ -4,5 +4,5 @@ module.exports = ({ env }: { env: any }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
-  url: env('VERCEL_URL', 'http://localhost:1337'),
+  url: env('RENDER_EXTERNAL_URL', 'http://localhost:1337'),
 });
