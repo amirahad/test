@@ -1,29 +1,28 @@
-const strapi = require('@strapi/strapi');
-const path = require('path');
-
-let strapiInstance;
-
-async function createStrapi() {
-    if (!strapiInstance) {
-        // Compile TypeScript to JavaScript if needed
-        const appContext = await strapi.compile();
-        strapiInstance = strapi(appContext);
-        await strapiInstance.load();
-    }
-    return strapiInstance;
-}
-
+// Simple API handler for Vercel
 module.exports = async (req, res) => {
-    try {
-        const app = await createStrapi();
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-        // Let Strapi handle the request
-        app.server.app.callback()(req, res);
-    } catch (error) {
-        console.error('Strapi serverless error:', error);
-        res.status(500).json({
-            error: 'Internal Server Error',
-            message: error.message
-        });
-    }
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
+  try {
+    // For now, return a simple API response
+    res.status(200).json({
+      message: 'Strapi API is running',
+      path: req.url,
+      method: req.method,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('API Error:', error);
+    res.status(500).json({
+      error: 'Internal Server Error',
+      message: error.message
+    });
+  }
 }; 
