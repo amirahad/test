@@ -1,4 +1,4 @@
-module.exports = ({ env }) => ({
+module.exports = ({ env }: { env: any }) => ({
   host: '0.0.0.0',
   port: env.int('PORT', 1337),
   app: {
